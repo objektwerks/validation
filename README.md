@@ -1,6 +1,6 @@
 Scala Validator
 ---------------
->Scala 3 validator library.
+>Scala 3 validator library. WIP!
 
 Test
 ----
