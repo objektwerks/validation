@@ -17,5 +17,5 @@ given PersonValidator as Validator[Throwable, Person] {
 }
 
 given PersonValidators as Validators[Throwable, Person] {
-  def validates(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
+  def validate(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
 }
