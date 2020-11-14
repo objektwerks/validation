@@ -3,6 +3,11 @@ package validator
 import munit._
 
 class ValidatorTest extends FunSuite {
+  test("validate") {
+    val person = Person("Fred Flintsone", 28)
+    assert( person.validate == person )
+  }
+
   test("validator > valid") {
     val person = Person("Fred Flintsone", 28)
     val validatedPerson = validate( person )
