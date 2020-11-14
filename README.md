@@ -1,9 +1,7 @@
 Scala Validator
 ---------------
->Scala 3 validator library. ***WIP!***
+>Scala 3 validator pattern.
 
 Test
 ----
-1. sbt [ interactive shell ]
-2. clean
-3. test
+1. sbt clean test
