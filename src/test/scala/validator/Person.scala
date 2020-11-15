@@ -12,10 +12,10 @@ extension (person: Person) {
   }
 }
 
-given PersonValidator as Validator[Throwable, Person] {
+given PersonValidator as EntityValidator[Throwable, Person] {
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
 }
 
-given PersonValidators as Validators[Throwable, Person] {
+given PersonsValidator as EntitiesValidator[Throwable, Person] {
   def validate(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
 }
