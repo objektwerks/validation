@@ -1,7 +1,8 @@
 package validator
 
-trait EntityValidator[E, T] {
-  def validate(entity: T): Either[E, T]
+trait EntityValidator[R, E, T] {
+  def validate(entity: R): Either[E, T]
 }
 
-def validateEntity[E, T](entity: T)(using entityValidator: EntityValidator[E, T]): Either[E, T] = entityValidator.validate(entity)
+def validateEntity[R, E, T](entity: R)
+  (using entityValidator: EntityValidator[R, E, T]): Either[E, T] = entityValidator.validate(entity)

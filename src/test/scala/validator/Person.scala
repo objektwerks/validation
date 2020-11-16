@@ -4,13 +4,6 @@ import scala.util.Try
 
 final case class Person(name: String, age: Int)
 
-object Person {
-  def toValidPerson(csv: Array[String]): Either[Throwable, Person] =
-    Try {
-      Person( csv(0), csv(1).toInt ).validate
-    }.toEither
-}
-
 extension (person: Person) {
   def validate: Person = {
     require(person.name.nonEmpty, "Name is empty.")
@@ -19,18 +12,20 @@ extension (person: Person) {
   }
 }
 
-given PersonValidator as EntityValidator[Throwable, Person] {
+given PersonValidator as EntityValidator[Person, Throwable, Person] {
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
 }
 
-given PersonsValidator as EntitiesValidator[Throwable, Person] {
+given PersonsValidator as EntitiesValidator[Person, Throwable, Person] {
   def validate(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
 }
 
-given CsvValidator as EntityValidator[Throwable, Array[String]] {
-  def validate(csv: Array[String]): Either[Throwable, Array[String]] =
+given CsvValidator as EntityValidator[Array[String], Throwable, Person] {
+  def validate(csv: Array[String]): Either[Throwable, Person] =
     Try { 
       require(csv.length == 2, "Csv length != 2.")
-      csv
+      val name = csv(0)
+      val age = Try( csv(1).toInt ).getOrElse(0)
+      Person(name, age).validate
     }.toEither
 }
