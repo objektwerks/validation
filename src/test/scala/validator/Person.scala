@@ -25,12 +25,11 @@ given CsvValidator as EntityValidator[Csv, Throwable, Seq[Person]] {
   def validate(csv: Csv): Either[Throwable, Seq[Person]] =
     Try {
       val persons = ArrayBuffer[Person]()
-      for ( row <- csv.rows )
-        yield {
+      for row <- csv.rows
+        yield
           val name = row(0)
           val age = Try( row(1).toInt ).getOrElse(0)
           persons.addOne( Person(name, age).validate )
-        }
       persons.toSeq
     }.toEither
 }
