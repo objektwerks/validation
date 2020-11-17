@@ -45,3 +45,18 @@ given JsonValidator as EntityValidator[Json, Throwable, Person] {
       Person(name, age).validate
     }.toEither
 }
+
+given JsonsValidator as EntityValidator[Jsons, Throwable, Seq[Person]] {
+  def validate(jsons: Jsons): Either[Throwable, Seq[Person]] =
+    import ujson._
+    Try {
+      val persons = ArrayBuffer[Person]()
+      for value <- jsons.values
+        yield
+          val jsonValue = ujson.read(value)
+          val name = jsonValue("name").str
+          val age = jsonValue("age").num.toInt
+          persons.addOne( Person(name, age).validate )
+      persons.toSeq
+    }.toEither
+}
