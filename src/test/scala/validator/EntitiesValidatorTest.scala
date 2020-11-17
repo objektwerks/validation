@@ -11,14 +11,14 @@ class EntitiesValidatorTest extends FunSuite {
   }
 
   test("invalid") {
-    val persons = Seq( Person("", 0), Person("", 0) )
+    val persons = Seq( Person("Fred Flintstone", 0), Person("", 0) )
     val validatedPersons = validateEntities( persons )
     assert( validatedPersons(0).isLeft )
     assert( validatedPersons(1).isLeft )
   }
 
   test("valid | invalid") {
-    val persons = Seq( Person("Fred Flintstone", 28), Person("", 0) )
+    val persons = Seq( Person("Fred Flintstone", 28), Person("Fred Flintstone", 0) )
     val validatedPersons = validateEntities( persons )
     assert( validatedPersons(0).isRight )
     assert( validatedPersons(1).isLeft )

@@ -15,7 +15,7 @@ class EntityValidatorTest extends FunSuite {
   }
 
   test("invalid") {
-    val person = Person("", 0)
+    val person = Person("Fred Flintstone", 0)
     val validatedPerson = validateEntity( person )
     assert( validatedPerson.isLeft )
   }
