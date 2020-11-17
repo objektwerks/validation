@@ -1,5 +1,6 @@
 package validator
 
+import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
 
 final case class Person(name: String, age: Int)
@@ -20,13 +21,17 @@ given PersonsValidator as EntitiesValidator[Person, Throwable, Person] {
   def validate(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
 }
 
-given CsvValidator as EntityValidator[Array[String], Throwable, Person] {
-  def validate(csv: Array[String]): Either[Throwable, Person] =
-    Try { 
-      require(csv.length == 2, "Csv length != 2.")
-      val name = csv(0)
-      val age = Try( csv(1).toInt ).getOrElse(0)
-      Person(name, age).validate
+given CsvValidator as EntityValidator[Csv, Throwable, Seq[Person]] {
+  def validate(csv: Csv): Either[Throwable, Seq[Person]] =
+    Try {
+      val persons = ArrayBuffer[Person]()
+      for ( row <- csv.rows )
+        yield {
+          val name = row(0)
+          val age = Try( row(1).toInt ).getOrElse(0)
+          persons.addOne( Person(name, age).validate )
+        }
+      persons.toSeq
     }.toEither
 }
 

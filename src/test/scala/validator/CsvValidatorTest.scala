@@ -4,14 +4,18 @@ import munit._
 
 class CsvValidatorTest extends FunSuite {
   test("valid") {
-    val array = Array("Fred Flintstone", "28")
-    val validatedPerson = validateEntity( array )
+    val columns = Seq("Fred Flintstone", "28")
+    val rows = Seq( columns )
+    val csv = Csv( rows )
+    val validatedPerson = validateEntity( csv )
     assert( validatedPerson.isRight )
   }
 
   test("invalid") {
-    val array = Array("Fred Flintstone", "0")
-    val validatedPerson = validateEntity( array )
+    val columns = Seq("Fred Flintstone", "0")
+    val rows = Seq( columns )
+    val csv = Csv( rows )
+    val validatedPerson = validateEntity( csv )
     assert( validatedPerson.isLeft )
   }
 }
