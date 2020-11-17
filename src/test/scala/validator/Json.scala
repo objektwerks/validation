@@ -1,5 +1,3 @@
 package validator
 
-final case class Json(value: String)
-
-final case class Jsons(values: Seq[String])
+final case class Json(values: Seq[String])

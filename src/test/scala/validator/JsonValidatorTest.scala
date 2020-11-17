@@ -7,14 +7,9 @@ class JsonValidatorTest extends FunSuite {
     val value = """
                  { "name":"Fred Flintstone", "age": 28 }
                """
-    val json = Json( value )
-
-    val validatedPerson = validateEntity( json )
-    assert( validatedPerson.isRight )
-
     val values = Seq(value)
-    val jsons = Jsons(values)
-    val validatedPersons = validateEntity( jsons )
+    val json = Json(values)
+    val validatedPersons = validateEntity( json )
     assert( validatedPersons.isRight )
   }
 
@@ -22,14 +17,9 @@ class JsonValidatorTest extends FunSuite {
     val value = """
                  { "name":"Fred Flintstone", "age": 0 }
                """
-    val json = Json( value )
-
-    val validatedPerson = validateEntity( json )
-    assert( validatedPerson.isLeft )
-
     val values = Seq(value)
-    val jsons = Jsons(values)
-    val validatedPersons = validateEntity( jsons )
+    val json = Json(values)
+    val validatedPersons = validateEntity( json )
     assert( validatedPersons.isLeft )
   }
 }
