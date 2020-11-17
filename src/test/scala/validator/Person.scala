@@ -29,3 +29,14 @@ given CsvValidator as EntityValidator[Array[String], Throwable, Person] {
       Person(name, age).validate
     }.toEither
 }
+
+given JsonValidator as EntityValidator[String, Throwable, Person] {
+  def validate(json: String): Either[Throwable, Person] =
+    import ujson._
+    Try {
+      val jsonValue = ujson.read(json)
+      val name = jsonValue("name").str
+      val age = jsonValue("age").num.toInt
+      Person(name, age).validate
+    }.toEither
+}
