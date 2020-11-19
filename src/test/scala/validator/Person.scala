@@ -42,9 +42,9 @@ given JsonValidator as EntityValidator[Json, Throwable, Seq[Person]] {
     import ujson._
     Try {
       val persons = ArrayBuffer[Person]()
-      for value <- json.values
+      for jsonObject <- json.jsonObjects
         yield
-          val jsonValue = ujson.read(value)
+          val jsonValue = ujson.read(jsonObject)
           val name = jsonValue("name").str
           val age = jsonValue("age").num.toInt
           persons.addOne( Person(name, age).validate )
