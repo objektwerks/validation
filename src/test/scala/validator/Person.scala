@@ -3,10 +3,6 @@ package validator
 import scala.util.Try
 import scala.collection.mutable.ArrayBuffer
 
-final case class Csv(rows: Seq[Seq[String]])
-
-final case class Json(values: Seq[String])
-
 final case class Person(name: String, age: Int)
 
 extension (person: Person) {
