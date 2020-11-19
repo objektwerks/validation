@@ -1,4 +1,4 @@
-name := "scala.validator"
+name := "scala3.validator"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
 scalaVersion := "3.0.0-M1"
