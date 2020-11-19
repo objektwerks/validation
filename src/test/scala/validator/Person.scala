@@ -3,7 +3,10 @@ package validator
 import scala.util.Try
 import scala.collection.mutable.ArrayBuffer
 
-final case class Person(name: String, age: Int)
+type Name = String
+type Age = Int
+
+final case class Person(name: Name, age: Age)
 
 extension (person: Person) {
   def validate: Person = {
