@@ -7,7 +7,7 @@ class JsonValidatorTest extends FunSuite {
     val jsonObject = JsonObject(
                        """
                          { "name":"Fred Flintstone", "age": 28 }
-                       """
+                       """.stripMargin
                      )
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
@@ -19,7 +19,7 @@ class JsonValidatorTest extends FunSuite {
     val jsonObject = JsonObject(
                        """
                          { "name":"Fred Flintstone", "age": 0 }
-                       """
+                       """.stripMargin
                      )
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
