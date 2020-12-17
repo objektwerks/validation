@@ -1,14 +1,15 @@
 package validator
 
-import munit._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class CsvValidatorTest extends FunSuite {
+class CsvValidatorTest extends AnyFunSuite with Matchers {
   test("valid") {
     val row = Row( Column("Fred Flintstone"), Column("28") )
     val rows = Rows( row )
     val csv = Csv( rows )
     val validatedPerson = validateEntity( csv )
-    assert( validatedPerson.isRight )
+    validatedPerson.isRight shouldBe true
   }
 
   test("invalid") {
@@ -16,6 +17,6 @@ class CsvValidatorTest extends FunSuite {
     val rows = Rows( row )
     val csv = Csv( rows )
     val validatedPerson = validateEntity( csv )
-    assert( validatedPerson.isLeft )
+    validatedPerson.isLeft shouldBe true
   }
 }
