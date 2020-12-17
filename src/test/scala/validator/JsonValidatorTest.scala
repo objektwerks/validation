@@ -1,8 +1,9 @@
 package validator
 
-import munit._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class JsonValidatorTest extends FunSuite {
+class JsonValidatorTest extends AnyFunSuite with Matchers {
   test("valid") {
     val jsonObject = JsonObject(
                        """
@@ -12,7 +13,7 @@ class JsonValidatorTest extends FunSuite {
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
     val validatedPersons = validateEntity( json )
-    assert( validatedPersons.isRight )
+    validatedPersons.isRight shouldBe true
   }
 
   test("invalid") {
@@ -24,6 +25,6 @@ class JsonValidatorTest extends FunSuite {
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
     val validatedPersons = validateEntity( json )
-    assert( validatedPersons.isLeft )
+    validatedPersons.isLeft shouldBe true
   }
 }
