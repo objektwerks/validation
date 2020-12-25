@@ -16,15 +16,13 @@ extension (person: Person) {
   }
 }
 
-given PersonValidator as EntityValidator[Person, Throwable, Person] {
+given EntityValidator[Person, Throwable, Person] with
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
-}
 
-given PersonsValidator as EntitiesValidator[Person, Throwable, Person] {
+given EntitiesValidator[Person, Throwable, Person] with
   def validate(persons: Seq[Person]): Seq[Either[Throwable, Person]] = persons.map { person => Try( person.validate ).toEither }
-}
 
-given CsvValidator as EntityValidator[Csv, Throwable, Seq[Person]] {
+given EntityValidator[Csv, Throwable, Seq[Person]] with
   def validate(csv: Csv): Either[Throwable, Seq[Person]] =
     Try {
       val persons = ArrayBuffer[Person]()
@@ -35,9 +33,8 @@ given CsvValidator as EntityValidator[Csv, Throwable, Seq[Person]] {
           persons.addOne( Person(name, age).validate )
       persons.toSeq
     }.toEither
-}
 
-given JsonValidator as EntityValidator[Json, Throwable, Seq[Person]] {
+given EntityValidator[Json, Throwable, Seq[Person]] with
   def validate(json: Json): Either[Throwable, Seq[Person]] =
     import ujson._
     Try {
@@ -50,4 +47,3 @@ given JsonValidator as EntityValidator[Json, Throwable, Seq[Person]] {
           persons.addOne( Person(name, age).validate )
       persons.toSeq
     }.toEither
-}
