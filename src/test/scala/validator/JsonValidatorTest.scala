@@ -1,30 +1,29 @@
 package validator
 
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.matchers.should.Matchers
+import munit._
 
-class JsonValidatorTest extends AnyFunSuite with Matchers {
+class JsonValidatorTest extends FunSuite {
   test("valid") {
     val jsonObject = JsonObject(
-                       """
+      """
                          { "name":"Fred Flintstone", "age": 28 }
                        """.stripMargin
-                     )
+    )
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
     val validatedPersons = validateEntity( json )
-    validatedPersons.isRight shouldBe true
+    assert( validatedPersons.isRight )
   }
 
   test("invalid") {
     val jsonObject = JsonObject(
-                       """
+      """
                          { "name":"Fred Flintstone", "age": 0 }
                        """.stripMargin
-                     )
+    )
     val jsonObjects = JsonObjects( jsonObject )
     val json = Json( jsonObjects )
     val validatedPersons = validateEntity( json )
-    validatedPersons.isLeft shouldBe true
+    assert( validatedPersons.isLeft )
   }
 }

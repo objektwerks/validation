@@ -1,27 +1,26 @@
 package validator
 
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.matchers.should.Matchers
+import munit._
 
-class EntitiesValidatorTest extends AnyFunSuite with Matchers {
+class EntitiesValidatorTest extends FunSuite {
   test("valid") {
     val persons = Seq( Person("Fred Flintsone", 28), Person("Betty Flintsone", 27) )
     val validatedPersons = validateEntities( persons )
-    validatedPersons(0).isRight shouldBe true
-    validatedPersons(1).isRight shouldBe true
+    assert( validatedPersons(0).isRight )
+    assert( validatedPersons(1).isRight )
   }
 
   test("invalid") {
     val persons = Seq( Person("Fred Flintstone", 0), Person("", 0) )
     val validatedPersons = validateEntities( persons )
-    validatedPersons(0).isLeft shouldBe true
-    validatedPersons(1).isLeft shouldBe true
+    assert( validatedPersons(0).isLeft )
+    assert( validatedPersons(1).isLeft )
   }
 
   test("valid | invalid") {
     val persons = Seq( Person("Fred Flintstone", 28), Person("Fred Flintstone", 0) )
     val validatedPersons = validateEntities( persons )
-    validatedPersons(0).isRight shouldBe true
-    validatedPersons(1).isLeft shouldBe true
+    assert( validatedPersons(0).isRight )
+    assert( validatedPersons(1).isLeft )
   }
 }
