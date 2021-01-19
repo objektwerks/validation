@@ -3,7 +3,7 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class CsvValidatorTest extends AnyFunSuite with Matchers {
+class CsvValidatorTest extends AnyFunSuite with Matchers:
   test("valid") {
     val row = Row( Column("Fred Flintstone"), Column("28") )
     val rows = Rows( row )
@@ -19,4 +19,3 @@ class CsvValidatorTest extends AnyFunSuite with Matchers {
     val validatedPerson = validateEntity( csv )
     validatedPerson.isLeft shouldBe true
   }
-}

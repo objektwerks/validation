@@ -3,7 +3,7 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class EntityValidatorTest extends AnyFunSuite with Matchers {
+class EntityValidatorTest extends AnyFunSuite with Matchers:
   test("validate") {
     val person = Person("Fred Flintsone", 28)
     person.validate shouldBe person
@@ -20,4 +20,3 @@ class EntityValidatorTest extends AnyFunSuite with Matchers {
     val validatedPerson = validateEntity( person )
     validatedPerson.isLeft shouldBe true
   }
-}
