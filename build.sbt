@@ -1,7 +1,7 @@
 name := "scala3.validator"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "3.0.1"
+scalaVersion := "3.0.2-RC1"
 libraryDependencies ++= {
   Seq(
     "com.lihaoyi" % "ujson_2.13" % "1.2.3" % Test,
