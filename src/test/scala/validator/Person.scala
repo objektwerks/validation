@@ -27,7 +27,7 @@ given EntityValidator[Csv, Throwable, Seq[Person]] with
       val persons = ArrayBuffer[Person]()
       for row <- csv.rows
         yield
-          val name = row(0)
+          val name = row.head
           val age = Try( row(1).toInt ).getOrElse(0)
           persons.addOne( Person(name, age).validate )
       persons.toSeq
