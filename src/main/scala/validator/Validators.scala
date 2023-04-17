@@ -16,4 +16,6 @@ object Validators {
 
   trait Validator[R, E, T]:
     def validate(entities: Seq[R]): Seq[Either[Seq[E], T]]
+
+  def validate[R, E, T](entities: Seq[R]):  Seq[Either[Seq[E], T]] = ???
 }
