@@ -3,6 +3,8 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import Validators.{given, *}
+
 class JsonValidatorTest extends AnyFunSuite with Matchers:
   test("valid") {
     val jsonObject = JsonObject(

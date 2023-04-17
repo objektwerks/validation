@@ -3,6 +3,8 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import Validators.{given, *}
+
 class EntityValidatorTest extends AnyFunSuite with Matchers:
   test("validate") {
     val person = Person("Fred Flintsone", 28)

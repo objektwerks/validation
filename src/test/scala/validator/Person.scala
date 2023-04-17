@@ -3,6 +3,8 @@ package validator
 import scala.util.Try
 import scala.collection.mutable.ArrayBuffer
 
+import Validators.{given, *}
+
 type Name = String
 type Age = Int
 
