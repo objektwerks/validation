@@ -22,7 +22,5 @@ object Validators {
   def validate[R, E, T](entity: R)
     (using validator: Validator[R, E, T]): Either[Seq[E], T] = validator.validate(entity)
 
-  trait Validation
-  case object Valid extends Validation
-  final case class Invalid(field: String, message: String) extends Validation
+  final case class Invalid(field: String, message: String)
 }
