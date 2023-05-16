@@ -3,7 +3,7 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Validators.{given, *}
+import Validators.*
 
 class EntityValidatorTest extends AnyFunSuite with Matchers:
   test("validate") {
