@@ -1,7 +1,5 @@
 package validator
 
-import java.io.ObjectInputValidation
-
 object Validators {
   trait EntityValidator[R, E, T]:
     def validate(entity: R): Either[E, T]
