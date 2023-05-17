@@ -4,6 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import Validators.*
+import validator.{Person, validate}
 
 class EntityValidatorTest extends AnyFunSuite with Matchers:
   test("validate") {

@@ -3,6 +3,8 @@ package validator
 import scala.util.Try
 import scala.collection.mutable.ArrayBuffer
 
+import ujson.*
+
 import Validators.*
 
 type Name = String
@@ -37,7 +39,6 @@ given EntityValidator[Csv, Throwable, Seq[Person]] with
 
 given EntityValidator[Json, Throwable, Seq[Person]] with
   def validate(json: Json): Either[Throwable, Seq[Person]] =
-    import ujson._
     Try {
       val persons = ArrayBuffer[Person]()
       for jsonObject <- json.jsonObjects

@@ -4,6 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import Validators.*
+import validator.{JsonObject, JsonObjects, Json}
 
 class JsonValidatorTest extends AnyFunSuite with Matchers:
   test("valid") {
