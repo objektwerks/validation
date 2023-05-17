@@ -7,13 +7,13 @@ class ValidationsTest extends AnyFunSuite with Matchers:
   test("valid") {
     val person = Person("Fred Flintsone", 28)
     val validations = person.validations
-    validations.size shouldBe 0
+    validations.isValid shouldBe true
   }
 
   test("invalid") {
     val person = Person("", 0)
     val validations = person.validations
-    validations.size shouldBe 2
-    validations.get("name").get.nonEmpty shouldBe true
-    validations.get("age").get.nonEmpty shouldBe true
+    validations.isValid shouldBe false
+    validations.get("name").nonEmpty shouldBe true
+    validations.get("age").nonEmpty shouldBe true
   }

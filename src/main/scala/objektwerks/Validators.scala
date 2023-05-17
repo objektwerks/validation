@@ -1,7 +1,5 @@
 package objektwerks
 
-import scala.collection.mutable
-
 object Validators {
   trait EntityValidator[R, E, T]:
     def validate(entity: R): Either[E, T]
@@ -23,8 +21,4 @@ object Validators {
     (using validator: Validator[R, E, T]): Either[Seq[E], T] = validator.validate(entity)
 
   final case class Invalid(field: String, message: String)
-
-  type Field = String
-  type Message = String
-  type Validations = mutable.HashMap[Field, Message]
 }

@@ -19,10 +19,10 @@ extension (person: Person)
     person
 
   def validations: Validations =
-    val map = new Validations()
-    if person.name.isEmpty then map += "name" -> "Name is less than 1 character."
-    if person.age < 1 then map +=  "age" -> s"Age of ${person.age} is less than 1."
-    map
+    val validations = Validations()
+    if person.name.isEmpty then validations.add("name", "Name is less than 1 character.")
+    if person.age < 1 then validations.add( "age", s"Age of ${person.age} is less than 1.")
+    validations
 
 given EntityValidator[Person, Throwable, Person] with
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
