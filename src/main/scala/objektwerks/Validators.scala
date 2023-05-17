@@ -13,11 +13,3 @@ object Validators:
   def validateEntities[R, E, T](entities: Seq[R])
     (using entitiesValidator: EntitiesValidator[R, E, T])
     (using entityValidator: EntityValidator[R, E, T]): Seq[Either[E, T]] = entities.map { entity => entityValidator.validate(entity) }
-
-  trait Validator[R, E, T]:
-    def validate(entity: R): Either[Seq[E], T]
-
-  def validate[R, E, T](entity: R)
-    (using validator: Validator[R, E, T]): Either[Seq[E], T] = validator.validate(entity)
-
-  final case class Invalid(field: String, message: String)
