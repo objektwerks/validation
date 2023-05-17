@@ -2,12 +2,9 @@ package objektwerks
 
 import scala.collection.mutable
 
-object Validations:
+class Validations:
   type Field = String
   type Message = String
-
-class Validations:
-  import Validations.*
 
   private val map = mutable.HashMap[Field, Message]()
 
