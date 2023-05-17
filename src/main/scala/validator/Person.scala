@@ -20,8 +20,8 @@ extension (person: Person)
 
   def validations: Validations =
     val map = new Validations()
-    if person.name.nonEmpty then map += "name" -> "Name is empty."
-    if person.age > 0 then map +=  "age" -> s"Age of ${person.age} is less than 1."
+    if person.name.isEmpty then map += "name" -> "Name is empty."
+    if person.age < 1 then map +=  "age" -> s"Age of ${person.age} is less than 1."
     map
 
 given EntityValidator[Person, Throwable, Person] with
