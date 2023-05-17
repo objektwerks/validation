@@ -21,7 +21,7 @@ extension (person: Person)
   def validations: Validations =
     val validations = Validations()
     if person.name.isEmpty then validations.add("name", "Name is less than 1 character.")
-    if person.age < 1 then validations.add( "age", s"Age of ${person.age} is less than 1.")
+    if person.age < 1 then validations.add("age", s"Age of ${person.age} is less than 1.")
     validations
 
 given EntityValidator[Person, Throwable, Person] with
