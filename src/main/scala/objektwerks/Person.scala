@@ -19,20 +19,20 @@ object Person:
   val ageField = "age"
 
   val nameMessage = "Name is less than 1 character."
-  def ageMessage(age: Int) = s"Age of $age is less than 1."
+  val ageMessage = "Age of is less than 1."
 
 final case class Person(name: Name, age: Age)
 
 extension (person: Person)
   def validate: Person =
     require(person.name.nonEmpty, nameMessage)
-    require(person.age > 0, ageMessage(person.age))
+    require(person.age > 0, ageMessage)
     person
 
   def validations: Validations =
     val validations = Validations()
     if person.name.isEmpty then validations.add(nameField, nameMessage)
-    if person.age < 1 then validations.add(ageField, ageMessage(person.age))
+    if person.age < 1 then validations.add(ageField, ageMessage)
     validations
 
 given EntityValidator[Person, Throwable, Person] with
