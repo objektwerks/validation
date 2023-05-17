@@ -6,22 +6,33 @@ import scala.collection.mutable.ArrayBuffer
 import ujson.*
 
 import Validators.*
+import objektwerks.Person.nameField
+import objektwerks.Person.ageField
+import objektwerks.Person.nameMessage
+import objektwerks.Person.ageMessage
 
 type Name = String
 type Age = Int
+
+object Person:
+  val nameField = "name"
+  val ageField = "age"
+
+  val nameMessage = "Name is less than 1 character."
+  def ageMessage(age: Int) = s"Age of $age is less than 1."
 
 final case class Person(name: Name, age: Age)
 
 extension (person: Person)
   def validate: Person =
-    require(person.name.nonEmpty, "Name is less than 1 character.")
-    require(person.age > 0, s"Age of ${person.age} is less than 1.")
+    require(person.name.nonEmpty, nameMessage)
+    require(person.age > 0, ageMessage(person.age))
     person
 
   def validations: Validations =
     val validations = Validations()
-    if person.name.isEmpty then validations.add("name", "Name is less than 1 character.")
-    if person.age < 1 then validations.add("age", s"Age of ${person.age} is less than 1.")
+    if person.name.isEmpty then validations.add(nameField, nameMessage)
+    if person.age < 1 then validations.add(ageField, ageMessage(person.age))
     validations
 
 given EntityValidator[Person, Throwable, Person] with
