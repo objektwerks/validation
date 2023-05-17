@@ -1,4 +1,4 @@
-package validator
+package objektwerks
 
 type Column = String
 def Column(column: String): Column = column

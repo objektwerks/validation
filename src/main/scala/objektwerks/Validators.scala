@@ -1,4 +1,4 @@
-package validator
+package objektwerks
 
 import scala.collection.mutable
 

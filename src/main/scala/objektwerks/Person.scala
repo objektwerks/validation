@@ -1,4 +1,4 @@
-package validator
+package objektwerks
 
 import scala.util.Try
 import scala.collection.mutable.ArrayBuffer

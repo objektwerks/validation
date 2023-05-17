@@ -1,4 +1,4 @@
-package validator
+package objektwerks
 
 type JsonObject = String
 def JsonObject(json: String): JsonObject = json
