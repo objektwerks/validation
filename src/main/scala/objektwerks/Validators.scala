@@ -1,6 +1,6 @@
 package objektwerks
 
-object Validators {
+object Validators:
   trait EntityValidator[R, E, T]:
     def validate(entity: R): Either[E, T]
 
@@ -21,4 +21,3 @@ object Validators {
     (using validator: Validator[R, E, T]): Either[Seq[E], T] = validator.validate(entity)
 
   final case class Invalid(field: String, message: String)
-}
