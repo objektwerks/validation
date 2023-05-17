@@ -21,8 +21,4 @@ object Validators {
     (using validator: Validator[R, E, T]): Either[Seq[E], T] = validator.validate(entity)
 
   final case class Invalid(field: String, message: String)
-
-  type Field = String
-  type Message = String
-  type Validations = Map[Field, Message]
 }
