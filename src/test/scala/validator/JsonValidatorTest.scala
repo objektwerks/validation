@@ -3,6 +3,7 @@ package validator
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import Json.*
 import Validators.*
 
 class JsonValidatorTest extends AnyFunSuite with Matchers:

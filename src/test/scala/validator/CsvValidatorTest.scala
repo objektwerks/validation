@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import Csv.*
-import Validators.{*, given}
+import Validators.*
 
 class CsvValidatorTest extends AnyFunSuite with Matchers:
   test("valid") {
