@@ -1,10 +1,9 @@
 package validator
 
-object Json:
-  type JsonObject = String
-  def JsonObject(json: String): JsonObject = json
+type JsonObject = String
+def JsonObject(json: String): JsonObject = json
 
-  type JsonObjects = Seq[JsonObject]
-  def JsonObjects(jsonObjects: JsonObject*): Seq[JsonObject] = Seq(jsonObjects: _*)
+type JsonObjects = Seq[JsonObject]
+def JsonObjects(jsonObjects: JsonObject*): Seq[JsonObject] = Seq(jsonObjects: _*)
 
-  final case class Json(jsonObjects: JsonObjects)
+final case class Json(jsonObjects: JsonObjects)
