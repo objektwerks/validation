@@ -14,13 +14,13 @@ final case class Person(name: Name, age: Age)
 
 extension (person: Person)
   def validate: Person =
-    require(person.name.nonEmpty, "Name is empty.")
+    require(person.name.nonEmpty, "Name is less than 1 character.")
     require(person.age > 0, s"Age of ${person.age} is less than 1.")
     person
 
   def validations: Validations =
     val map = new Validations()
-    if person.name.isEmpty then map += "name" -> "Name is empty."
+    if person.name.isEmpty then map += "name" -> "Name is less than 1 character."
     if person.age < 1 then map +=  "age" -> s"Age of ${person.age} is less than 1."
     map
 
