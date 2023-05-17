@@ -5,12 +5,13 @@ import scala.collection.mutable.ArrayBuffer
 
 import ujson.*
 
+import Person.*
 import Validators.*
 
-type Name = String
-type Age = Int
-
 object Person:
+  type Name = String
+  type Age = Int
+
   val nameField = "name"
   val ageField = "age"
 
@@ -21,14 +22,14 @@ final case class Person(name: Name, age: Age)
 
 extension (person: Person)
   def validate: Person =
-    require(person.name.nonEmpty, Person.nameMessage)
-    require(person.age > 0, Person.ageMessage)
+    require(person.name.nonEmpty, nameMessage)
+    require(person.age > 0, ageMessage)
     person
 
   def validations: Validations =
     val validations = Validations()
-    if person.name.isEmpty then validations.add(Person.nameField, Person.nameMessage)
-    if person.age < 1 then validations.add(Person.ageField, Person.ageMessage)
+    if person.name.isEmpty then validations.add(nameField, nameMessage)
+    if person.age < 1 then validations.add(ageField, ageMessage)
     validations
 
 given EntityValidator[Person, Throwable, Person] with
