@@ -16,4 +16,5 @@ class ValidationsTest extends AnyFunSuite with Matchers:
     validations.isValid shouldBe false
     validations.get("name").nonEmpty shouldBe true
     validations.get("age").nonEmpty shouldBe true
+    validations.collect.size shouldBe 2
   }
