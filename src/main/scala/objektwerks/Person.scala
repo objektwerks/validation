@@ -19,7 +19,7 @@ object Person:
   val ageField = "age"
 
   val nameMessage = "Name is less than 1 character."
-  val ageMessage = "Age of is less than 1."
+  val ageMessage = "Age is less than 1."
 
 final case class Person(name: Name, age: Age)
 
