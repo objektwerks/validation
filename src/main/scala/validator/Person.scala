@@ -13,11 +13,10 @@ type Age = Int
 final case class Person(name: Name, age: Age)
 
 extension (person: Person)
-  def validate: Person = {
+  def validate: Person =
     require(person.name.nonEmpty, "Name is empty.")
     require(person.age > 0, s"Age of ${person.age} is less than 1.")
     person
-  }
 
 given EntityValidator[Person, Throwable, Person] with
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
