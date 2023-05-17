@@ -6,7 +6,7 @@ class Validations:
   type Field = String
   type Message = String
 
-  private val map = mutable.HashMap[Field, Message]()
+  private val map = mutable.Map[Field, Message]()
 
   def isValid: Boolean = map.size == 0
 
