@@ -18,6 +18,12 @@ extension (person: Person)
     require(person.age > 0, s"Age of ${person.age} is less than 1.")
     person
 
+  def validations: Validations =
+    val map = new Validations()
+    if person.name.nonEmpty then map += "name" -> "Name is empty."
+    if person.age > 0 then map +=  "age" -> s"Age of ${person.age} is less than 1."
+    map
+
 given EntityValidator[Person, Throwable, Person] with
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither
 

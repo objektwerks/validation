@@ -1,5 +1,7 @@
 package validator
 
+import scala.collection.mutable
+
 object Validators {
   trait EntityValidator[R, E, T]:
     def validate(entity: R): Either[E, T]
@@ -24,5 +26,5 @@ object Validators {
 
   type Field = String
   type Message = String
-  type Validations = Map[Field, Message]
+  type Validations = mutable.HashMap[Field, Message]
 }
