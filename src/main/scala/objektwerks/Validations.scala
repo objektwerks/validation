@@ -8,7 +8,7 @@ class Validations:
 
   private val map = mutable.Map[Field, Message]()
 
-  def isValid: Boolean = map.size == 0
+  def isValid: Boolean = map.isEmpty
 
   def add(field: Field, message: Message): Unit = map += field -> message
 
