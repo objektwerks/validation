@@ -6,12 +6,12 @@ class Validations:
   type Field = String
   type Message = String
 
-  private val map = mutable.Map[Field, Message]()
+  private val invalidFields = mutable.Map[Field, Message]()
 
-  def isValid: Boolean = map.isEmpty
+  def isValid: Boolean = invalidFields.isEmpty
 
-  def add(field: Field, message: Message): Unit = map += field -> message
+  def add(field: Field, message: Message): Unit = invalidFields += field -> message
 
-  def get(field: Field): Option[Message] = map.get(field)
+  def get(field: Field): Option[Message] = invalidFields.get(field)
 
-  def collect: Map[Field, Message] = map.toMap
+  def collect: Map[Field, Message] = invalidFields.toMap
