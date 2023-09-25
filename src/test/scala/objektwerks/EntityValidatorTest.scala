@@ -5,20 +5,17 @@ import org.scalatest.matchers.should.Matchers
 
 import Validators.*
 
-class EntityValidatorTest extends AnyFunSuite with Matchers:
-  test("validate") {
+final class EntityValidatorTest extends AnyFunSuite with Matchers:
+  test("validate"):
     val person = Person("Fred Flintsone", 28)
     person.validate shouldBe person
-  }
 
-  test("valid") {
+  test("valid"):
     val person = Person("Fred Flintsone", 28)
     val validatedPerson = validateEntity( person )
     validatedPerson.isRight shouldBe true
-  }
 
-  test("invalid") {
+  test("invalid"):
     val person = Person("Fred Flintstone", 0)
     val validatedPerson = validateEntity( person )
     validatedPerson.isLeft shouldBe true
-  }
