@@ -26,8 +26,8 @@ extension (person: Person)
     require(person.age > 0, ageMessage)
     person
 
-  def validations: Validations =
-    val validations = Validations()
+  def invalidations: Invalidations =
+    val validations = Invalidations()
     if person.name.isEmpty then validations.add(nameField, nameMessage)
     if person.age < 1 then validations.add(ageField, ageMessage)
     validations
