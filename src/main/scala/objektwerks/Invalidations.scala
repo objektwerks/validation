@@ -10,6 +10,8 @@ class Invalidations:
 
   def isEmpty: Boolean = invalidFields.isEmpty
 
+  def count: Int = invalidFields.size
+
   def add(field: Field, message: Message): Unit = invalidFields += field -> message
 
   def get(field: Field): Option[Message] = invalidFields.get(field)
