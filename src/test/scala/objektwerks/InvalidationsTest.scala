@@ -13,7 +13,7 @@ final class InvalidationsTest extends AnyFunSuite with Matchers:
     val person = Person("", 0)
     val invalidations = person.invalidations
     invalidations.isEmpty shouldBe false
-    invalidations.get("name").nonEmpty shouldBe true
-    invalidations.get("age").nonEmpty shouldBe true
+    invalidations.get(Person.nameField).nonEmpty shouldBe true
+    invalidations.get(Person.ageField).nonEmpty shouldBe true
     invalidations.count shouldBe 2
     println( invalidations.asString )
