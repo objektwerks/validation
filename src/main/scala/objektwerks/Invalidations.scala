@@ -20,4 +20,4 @@ class Invalidations:
 
   def asMap: Map[Field, Message] = invalidFields.toMap
 
-  def asString: String = invalidFields.map { (field, message) => s"$field: $message " }.mkString.trim
+  def asString: String = invalidFields.map { (_, message) => s"$message " }.mkString.trim
