@@ -16,7 +16,7 @@ class Invalidations:
 
   def get(field: Field): Option[Message] = invalidFields.get(field)
 
-  def asList: List[String] = invalidFields.map { (field, message) => s"$field: $message" }.toList
+  def asList: List[String] = invalidFields.map { (_, message) => s"$message" }.toList
 
   def asMap: Map[Field, Message] = invalidFields.toMap
 
