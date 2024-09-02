@@ -16,5 +16,6 @@ final class InvalidationsTest extends AnyFunSuite with Matchers:
     invalidations.get(Person.nameField).nonEmpty shouldBe true
     invalidations.get(Person.ageField).nonEmpty shouldBe true
     invalidations.count shouldBe 2
+    println( invalidations.asList )
     println( invalidations.asMap )
     println( invalidations.asString )
