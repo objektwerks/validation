@@ -15,4 +15,4 @@ final class InvalidationsTest extends AnyFunSuite with Matchers:
     invalidations.isEmpty shouldBe false
     invalidations.get("name").nonEmpty shouldBe true
     invalidations.get("age").nonEmpty shouldBe true
-    invalidations.collect.size shouldBe 2
+    invalidations.count shouldBe 2
