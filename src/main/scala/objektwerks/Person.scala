@@ -12,8 +12,8 @@ object Person:
   type Name = String
   type Age = Int
 
-  val nameField = "name"
-  val ageField = "age"
+  val nameField = "Name"
+  val ageField = "Age"
 
   val nameMessage = "Name is less than 1 character."
   val ageMessage = "Age is less than 1."
