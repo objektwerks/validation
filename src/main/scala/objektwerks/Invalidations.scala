@@ -16,6 +16,6 @@ class Invalidations:
 
   def get(field: Field): Option[Message] = invalidFields.get(field)
 
-  def collect: Map[Field, Message] = invalidFields.toMap
+  def asMap: Map[Field, Message] = invalidFields.toMap
 
   def asString: String = invalidFields.map { (field, message) => s"$field: $message " }.mkString.trim
