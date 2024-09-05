@@ -8,9 +8,15 @@ class Invalidations:
 
   private val invalidFields = mutable.Map[Field, Message]()
 
+  private def add(field: Field, message: Message): Invalidations =
+    invalidFields += field -> message
+    this
+
   def isEmpty: Boolean = invalidFields.isEmpty
 
   def count: Int = invalidFields.size
+
+  def get(field: Field): Option[Message] = invalidFields.get(field)
 
   def invalidate(expression: Boolean)(field: Field, message: Message): Invalidations =
     if expression then add(field, message)
@@ -19,12 +25,6 @@ class Invalidations:
   def invalidate(fn: () => Boolean)(field: Field, message: Message): Invalidations =
     if fn() then add(field, message)
     else this
-
-  private def add(field: Field, message: Message): Invalidations =
-    invalidFields += field -> message
-    this
-
-  def get(field: Field): Option[Message] = invalidFields.get(field)
 
   def asList: List[String] = invalidFields.map { (_, message) => s"$message" }.toList
 
