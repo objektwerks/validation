@@ -7,11 +7,13 @@ final class InvalidationsTest extends AnyFunSuite with Matchers:
   test("valid"):
     val person = Person("Fred Flintsone", 28)
     val invalidations = person.invalidations
+    println(s"*** valid: invalidations: ${invalidations.asMap}")
     invalidations.isEmpty shouldBe true
 
   test("invalid"):
     val person = Person("", 0)
     val invalidations = person.invalidations
+    println(s"*** invalid: invalidations: ${invalidations.asMap}")
     invalidations.isEmpty shouldBe false
     invalidations.get(Person.nameField).nonEmpty shouldBe true
     invalidations.get(Person.ageField).nonEmpty shouldBe true

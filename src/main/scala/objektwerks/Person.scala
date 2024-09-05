@@ -27,10 +27,9 @@ extension (person: Person)
     person
 
   def invalidations: Invalidations =
-    val validations = Invalidations()
-    if person.name.isEmpty then validations.add(nameField, nameMessage)
-    if person.age < 1 then validations.add(ageField, ageMessage)
-    validations
+    Invalidations()
+      .invalidate(person.name.isEmpty)(nameField, nameMessage)
+      .invalidate(person.age < 1)(ageField, ageMessage)
 
 given EntityValidator[Person, Throwable, Person] with
   def validate(person: Person): Either[Throwable, Person] = Try( person.validate ).toEither

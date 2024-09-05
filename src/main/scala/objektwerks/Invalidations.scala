@@ -12,7 +12,17 @@ class Invalidations:
 
   def count: Int = invalidFields.size
 
-  def add(field: Field, message: Message): Unit = invalidFields += field -> message
+  def invalidate(expression: Boolean)(field: Field, message: Message): Invalidations =
+    if expression then add(field, message)
+    else this
+
+  def invalidate(f: () => Boolean)(field: Field, message: Message): Invalidations =
+    if f() then add(field, message)
+    else this
+
+  private def add(field: Field, message: Message): Invalidations =
+    invalidFields += field -> message
+    this
 
   def get(field: Field): Option[Message] = invalidFields.get(field)
 
