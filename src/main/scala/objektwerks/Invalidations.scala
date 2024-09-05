@@ -18,8 +18,6 @@ class Invalidations:
 
   def count: Int = invalidations.size
 
-  def get(field: Field): Option[Message] = invalidations.get(field)
-
   def asList: List[String] = invalidations.map { (_, message) => s"$message" }.toList
 
   def asMap: Map[Field, Message] = invalidations.toMap
