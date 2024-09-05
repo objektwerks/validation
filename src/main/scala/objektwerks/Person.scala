@@ -8,15 +8,20 @@ import ujson.*
 import Person.*
 import Validators.*
 
+opaque type Name <: String = String
+object Name:
+  def apply(value: String): Name = value
+
+opaque type Age <: Int = Int
+object Age:
+  def apply(value: Int): Age = value
+
 object Person:
-  type Name = String
-  type Age = Int
+  val nameField = Field("Name")
+  val ageField = Field("Age")
 
-  val nameField = "Name"
-  val ageField = "Age"
-
-  val nameMessage = "Name is less than 1 character."
-  val ageMessage = "Age is less than 1."
+  val nameMessage = Message("Name is less than 1 character.")
+  val ageMessage = Message("Age is less than 1.")
 
 final case class Person(name: Name, age: Age)
 
