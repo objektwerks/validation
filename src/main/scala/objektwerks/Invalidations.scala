@@ -18,6 +18,12 @@ class Invalidations:
 
   def get(field: Field): Option[Message] = invalidFields.get(field)
 
+  def asList: List[String] = invalidFields.map { (_, message) => s"$message" }.toList
+
+  def asMap: Map[Field, Message] = invalidFields.toMap
+
+  def asString: String = asList.mkString(",")
+
   def invalidate(expression: Boolean)(field: Field, message: Message): Invalidations =
     if expression then add(field, message)
     else this
@@ -25,9 +31,3 @@ class Invalidations:
   def invalidate(fn: () => Boolean)(field: Field, message: Message): Invalidations =
     if fn() then add(field, message)
     else this
-
-  def asList: List[String] = invalidFields.map { (_, message) => s"$message" }.toList
-
-  def asMap: Map[Field, Message] = invalidFields.toMap
-
-  def asString: String = asList.mkString(",")
