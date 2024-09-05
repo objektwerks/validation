@@ -14,6 +14,8 @@ class Invalidations:
 
   def isEmpty: Boolean = invalidations.isEmpty
 
+  def isNonEmpty: Boolean = !invalidations.isEmpty
+
   def count: Int = invalidations.size
 
   def get(field: Field): Option[Message] = invalidations.get(field)
