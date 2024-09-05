@@ -26,7 +26,7 @@ extension (person: Person)
     require(person.age > 0, ageMessage)
     person
 
-  def invalidations: Invalidations =
+  def invalidate: Invalidations =
     Invalidations()
       .invalidate(person.name.isEmpty)(nameField, nameMessage)
       .invalidate(person.age < 1)(ageField, ageMessage)
