@@ -16,8 +16,8 @@ class Invalidations:
     if expression then add(field, message)
     else this
 
-  def invalidate(f: () => Boolean)(field: Field, message: Message): Invalidations =
-    if f() then add(field, message)
+  def invalidate(fn: () => Boolean)(field: Field, message: Message): Invalidations =
+    if fn() then add(field, message)
     else this
 
   private def add(field: Field, message: Message): Invalidations =
