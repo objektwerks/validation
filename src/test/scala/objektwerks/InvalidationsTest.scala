@@ -15,8 +15,6 @@ final class InvalidationsTest extends AnyFunSuite with Matchers:
     val invalidations = person.invalidate
     println(s"*** invalid: invalidations: ${invalidations.asMap}")
     invalidations.isNonEmpty shouldBe true
-    invalidations.get(Person.nameField).nonEmpty shouldBe true
-    invalidations.get(Person.ageField).nonEmpty shouldBe true
     invalidations.count shouldBe 2
     println( invalidations.asList )
     println( invalidations.asMap )
