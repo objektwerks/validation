@@ -37,7 +37,7 @@ given EntitiesValidator[Person, Throwable, Person] with
 
 given EntityValidator[Csv, Throwable, Seq[Person]] with
   def validate(csv: Csv): Either[Throwable, Seq[Person]] =
-    Try {
+    Try:
       val persons = ArrayBuffer[Person]()
       for row <- csv.rows
         yield
@@ -45,11 +45,11 @@ given EntityValidator[Csv, Throwable, Seq[Person]] with
           val age = Try( row(1).toInt ).getOrElse(0)
           persons.addOne( Person(Name(name), Age(age)).validate )
       persons.toSeq
-    }.toEither
+    .toEither
 
 given EntityValidator[Json, Throwable, Seq[Person]] with
   def validate(json: Json): Either[Throwable, Seq[Person]] =
-    Try {
+    Try:
       val persons = ArrayBuffer[Person]()
       for jsonObject <- json.jsonObjects
         yield
@@ -58,4 +58,4 @@ given EntityValidator[Json, Throwable, Seq[Person]] with
           val age = jsonValue("age").num.toInt
           persons.addOne( Person(Name(name), Age(age)).validate )
       persons.toSeq
-    }.toEither
+    .toEither
