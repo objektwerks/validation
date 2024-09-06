@@ -1,6 +1,6 @@
 name := "scala3.validator"
 organization := "objektwerks"
-version := "0.4"
+version := "0.5-SNAPSHOT"
 scalaVersion := "3.5.1-RC2"
 libraryDependencies ++= {
   Seq(
