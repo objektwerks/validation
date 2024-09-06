@@ -1,6 +1,6 @@
 Scala 3 Validator
 -----------------
->Validators and validations with examples for case class, csv and json.
+>Validators, validations and invalidations for case class, csv and json.
 
 Test
 ----
