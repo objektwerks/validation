@@ -3,6 +3,7 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import Types.*
 import Validators.*
 
 final class EntitiesValidatorTest extends AnyFunSuite with Matchers:

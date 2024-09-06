@@ -6,15 +6,8 @@ import scala.collection.mutable.ArrayBuffer
 import ujson.*
 
 import Person.*
+import Types.*
 import Validators.*
-
-opaque type Name <: String = String
-object Name:
-  def apply(value: String): Name = value
-
-opaque type Age <: Int = Int
-object Age:
-  def apply(value: Int): Age = value
 
 object Person:
   val nameField = Field("Name")
@@ -50,7 +43,7 @@ given EntityValidator[Csv, Throwable, Seq[Person]] with
         yield
           val name = row.head
           val age = Try( row(1).toInt ).getOrElse(0)
-          persons.addOne( Person(name, age).validate )
+          persons.addOne( Person(Name(name), Age(age)).validate )
       persons.toSeq
     }.toEither
 
@@ -63,6 +56,6 @@ given EntityValidator[Json, Throwable, Seq[Person]] with
           val jsonValue = ujson.read(jsonObject)
           val name = jsonValue("name").str
           val age = jsonValue("age").num.toInt
-          persons.addOne( Person(name, age).validate )
+          persons.addOne( Person(Name(name), Age(age)).validate )
       persons.toSeq
     }.toEither
