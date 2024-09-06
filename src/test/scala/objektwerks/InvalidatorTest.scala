@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import Types.*
 
-final class InvalidationsTest extends AnyFunSuite with Matchers:
+final class InvalidatorTest extends AnyFunSuite with Matchers:
   test("valid"):
     val person = Person(Name("Fred Flintsone"), Age(28))
     val invalidations = person.invalidate
