@@ -9,12 +9,12 @@ final class InvalidatorTest extends AnyFunSuite with Matchers:
   test("valid"):
     val person = Person(Name("Fred Flintsone"), Age(28))
     val invalidations = person.invalidate
-    invalidations.isEmpty shouldBe true
+    invalidations.isValid shouldBe true
 
   test("invalid"):
     val person = Person(Name(""), Age(0))
     val invalidations = person.invalidate
-    invalidations.isNonEmpty shouldBe true
+    invalidations.isInvalid shouldBe true
     invalidations.count shouldBe 2
 
     println( invalidations.asList )

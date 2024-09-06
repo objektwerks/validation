@@ -11,9 +11,9 @@ class Invalidator:
     invalidations += field -> message
     this
 
-  def isEmpty: Boolean = invalidations.isEmpty
+  def isValid: Boolean = invalidations.isEmpty
 
-  def isNonEmpty: Boolean = !invalidations.isEmpty
+  def isInvalid: Boolean = !invalidations.isEmpty
 
   def count: Int = invalidations.size
 
