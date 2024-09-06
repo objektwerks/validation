@@ -4,7 +4,7 @@ import scala.collection.mutable
 
 import Types.*
 
-class Invalidator:
+final class Invalidator:
   private val invalidations = mutable.Map[Field, Message]()
 
   private def add(field: Field, message: Message): Invalidator =
