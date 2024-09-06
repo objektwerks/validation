@@ -1,5 +1,5 @@
-Scala 3 Validator
------------------
+Validation
+----------
 >Validators, validations and invalidations for case class, csv and json.
 
 Test
