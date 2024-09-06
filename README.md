@@ -1,6 +1,6 @@
 Validation
 ----------
->Validators, validations and invalidations for case class, csv and json.
+>Validators and invalidators for case class, csv and json.
 
 Test
 ----
