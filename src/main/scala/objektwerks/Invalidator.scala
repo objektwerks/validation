@@ -4,10 +4,10 @@ import scala.collection.mutable
 
 import Types.*
 
-class Invalidations:
+class Invalidator:
   private val invalidations = mutable.Map[Field, Message]()
 
-  private def add(field: Field, message: Message): Invalidations =
+  private def add(field: Field, message: Message): Invalidator =
     invalidations += field -> message
     this
 
@@ -23,10 +23,10 @@ class Invalidations:
 
   def asString: String = asList.mkString(",")
 
-  def invalidate(isInvalidExpr: Boolean)(field: Field, message: Message): Invalidations =
+  def invalidate(isInvalidExpr: Boolean)(field: Field, message: Message): Invalidator =
     if isInvalidExpr then add(field, message)
     else this
 
-  def invalidate(isInvalidFn: () => Boolean)(field: Field, message: Message): Invalidations =
+  def invalidate(isInvalidFn: () => Boolean)(field: Field, message: Message): Invalidator =
     if isInvalidFn() then add(field, message)
     else this
