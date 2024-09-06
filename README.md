@@ -1,6 +1,6 @@
 Validation
 ----------
->Validators and invalidators for case class, csv and json.
+>Validators and invalidator for case class, csv and json using uJson and Scala 3.
 
 Test
 ----
