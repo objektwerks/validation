@@ -21,8 +21,6 @@ final class Validator:
 
   def asMap: Map[Field, Message] = invalidations.toMap
 
-  def asString(separator: String = ","): String = asList.mkString(separator)
-
   def validate(expr: Boolean)(field: Field, message: Message): Validator =
     if expr then this
     else add(field, message)
