@@ -17,7 +17,7 @@ final class Invalidator:
 
   def count: Int = invalidations.size
 
-  def asList: List[String] = invalidations.map { (_, message) => s"$message" }.toList
+  def asList: List[String] = invalidations.map { (field, message) => s"[$field] $message" }.toList
 
   def asMap: Map[Field, Message] = invalidations.toMap
 
