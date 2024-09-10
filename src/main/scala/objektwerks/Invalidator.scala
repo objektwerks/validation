@@ -21,8 +21,6 @@ final class Invalidator:
 
   def asMap: Map[Field, Message] = invalidations.toMap
 
-  def asString(separator: String = ","): String = asList.mkString(separator)
-
   def invalidate(isInvalidExpr: Boolean)(field: Field, message: Message): Invalidator =
     if isInvalidExpr then add(field, message)
     else this
