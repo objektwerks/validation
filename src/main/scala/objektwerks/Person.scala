@@ -23,3 +23,8 @@ extension (person: Person)
     Invalidator()
       .invalidate(person.name.isEmpty)(nameField, nameMessage)
       .invalidate(person.age < 1)(ageField, ageMessage)
+
+  def xvalidate: Validator =
+    Validator()
+      .validate(person.name.nonEmpty)(nameField, Message("Name must be non empty."))
+      .validate(person.age > 0)(ageField, Message("Age must be greater than 1."))
