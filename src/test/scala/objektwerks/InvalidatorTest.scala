@@ -19,3 +19,4 @@ final class InvalidatorTest extends AnyFunSuite with Matchers:
 
     println( invalidations.asList )
     println( invalidations.asMap )
+    println( invalidations.asString )
