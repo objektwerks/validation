@@ -21,6 +21,14 @@ final class Invalidator:
 
   def asMap: Map[Field, Message] = invalidations.toMap
 
+  def asString: String =
+    val sb = StringBuilder()
+    asList.foreach(s =>
+      sb.addAll(s)
+      sb.addOne(',')
+    )
+    sb.substring(0, sb.length() - 1)
+
   def invalidate(isInvalidExpr: Boolean)(field: Field, message: Message): Invalidator =
     if isInvalidExpr then add(field, message)
     else this
