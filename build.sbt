@@ -1,6 +1,6 @@
 name := "validation"
 organization := "objektwerks"
-version := "0.7-SNAPSHOT"
+version := "0.7"
 scalaVersion := "3.5.1-RC2"
 libraryDependencies ++= {
   Seq(
