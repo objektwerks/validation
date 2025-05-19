@@ -4,7 +4,7 @@ version := "0.12-SNAPSHOT"
 scalaVersion := "3.7.1-RC1"
 libraryDependencies ++= {
   Seq(
-    "com.lihaoyi" %% "ujson" % "4.1.0",
+    "com.lihaoyi" %% "ujson" % "4.2.1",
     "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
 }
