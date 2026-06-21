@@ -1,7 +1,7 @@
 name := "validation"
 organization := "objektwerks"
 version := "0.12-SNAPSHOT"
-scalaVersion := "3.8.4"
+scalaVersion := "3.9.0-RC1"
 libraryDependencies ++= {
   Seq(
     "com.lihaoyi" %% "ujson" % "4.4.3",
